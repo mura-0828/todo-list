@@ -1,0 +1,47 @@
+name: テスト実行
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+
+jobs:
+  test:
+    name: ユニットテストと統合テスト
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: コードをチェックアウト
+        uses: actions/checkout@v4
+      
+      - name: pnpmをセットアップ
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      
+      - name: Node.jsをセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      
+      - name: 依存関係をインストール
+        run: pnpm install --frozen-lockfile
+      
+      - name: 型チェック
+        run: pnpm run type-check
+      
+      - name: Lintチェック
+        run: pnpm run lint
+      
+      - name: テスト実行
+        run: pnpm run test:ci
+      
+      - name: テストカバレッジをアップロード
+        uses: codecov/codecov-action@v4
+        if: always()
+        with:
+          files: ./coverage/coverage-final.json
+          flags: unittests
+          name: codecov-umbrella

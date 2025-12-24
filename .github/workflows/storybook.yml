@@ -1,0 +1,79 @@
+name: Storybookデプロイ
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  pull-requests: write
+
+jobs:
+  build-and-deploy:
+    name: Storybookをビルドしてデプロイ
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: コードをチェックアウト
+        uses: actions/checkout@v4
+      
+      - name: pnpmをセットアップ
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      
+      - name: Node.jsをセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      
+      - name: 依存関係をインストール
+        run: pnpm install --frozen-lockfile
+      
+      - name: Storybookをビルド
+        run: pnpm run build-storybook
+      
+      - name: GitHub Pagesをセットアップ
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/configure-pages@v4
+      
+      - name: Storybookをアップロード
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./storybook-static
+      
+      - name: GitHub Pagesにデプロイ
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        id: deployment
+        uses: actions/deploy-pages@v4
+      
+      - name: PRにStorybookプレビューをコメント
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const comment = `## 📚 Storybook プレビュー
+            
+            Storybookのビルドが完了しました！
+            
+            マージ後、以下のURLで確認できます：
+            \`https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/\`
+            
+            ### ビルド情報
+            - コミット: ${{ github.event.pull_request.head.sha }}
+            - ブランチ: ${{ github.event.pull_request.head.ref }}
+            `;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });

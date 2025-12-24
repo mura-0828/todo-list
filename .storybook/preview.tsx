@@ -1,9 +1,9 @@
-import type { Preview } from '@storybook/react'
-import '../app/globals.css'
+import type { Preview } from "@storybook/react"
+import "../app/globals.css"
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: '^on[A-Z].*' },
+    actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -13,7 +13,7 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <div className='font-sans'>
+      <div className="font-sans">
         <Story />
       </div>
     ),
