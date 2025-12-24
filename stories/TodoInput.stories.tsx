@@ -10,7 +10,7 @@ const meta = {
   },
   tags: ["autodocs"],
   args: {
-    onAddTodo: fn(),
+    onAdd: fn(),
   },
 } satisfies Meta<typeof TodoInput>
 

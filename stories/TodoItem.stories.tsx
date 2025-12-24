@@ -27,7 +27,7 @@ export const アクティブなタスク: Story = {
       id: "1",
       text: "プロジェクトの企画書を作成する",
       completed: false,
-      createdAt: Date.now(),
+      createdAt: new Date(),
     },
   },
 }
@@ -38,7 +38,7 @@ export const 完了したタスク: Story = {
       id: "2",
       text: "ミーティングの議事録を共有する",
       completed: true,
-      createdAt: Date.now(),
+      createdAt: new Date(),
     },
   },
 }
@@ -49,7 +49,7 @@ export const 長いテキストのタスク: Story = {
       id: "3",
       text: "これは非常に長いタスクのテキストで、複数行にわたって表示される可能性があります。UIが適切に処理できるかをテストするためのサンプルテキストです。",
       completed: false,
-      createdAt: Date.now(),
+      createdAt: new Date(),
     },
   },
 }

@@ -11,6 +11,7 @@ describe("TodoItem", () => {
     id: "1",
     text: "テストタスク",
     completed: false,
+    createdAt: new Date(),
   }
 
   const mockOnToggle = jest.fn()
