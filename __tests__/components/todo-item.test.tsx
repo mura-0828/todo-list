@@ -60,7 +60,7 @@ describe('TodoItem', () => {
       />
     )
 
-    const deleteButton = screen.getByRole('button', { name: /delete/i })
+    const deleteButton = screen.getByRole('button', { name: /削除/i })
     await user.click(deleteButton)
 
     expect(mockOnDelete).toHaveBeenCalledWith('1')

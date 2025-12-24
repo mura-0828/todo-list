@@ -14,6 +14,7 @@ const customJestConfig = {
     'components/**/*.{js,jsx,ts,tsx}',
     'hooks/**/*.{js,jsx,ts,tsx}',
     '!**/*.d.ts',
+    '!components/ui/**', // UIコンポーネントライブラリを除外
     '!**/node_modules/**',
   ],
   coverageThreshold: {

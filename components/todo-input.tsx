@@ -15,6 +15,9 @@ export function TodoInput({ onAdd }: TodoInputProps) {
   const [inputValue, setInputValue] = useState('')
 
   const handleAdd = () => {
+    if (inputValue.trim() === '') {
+      return
+    }
     onAdd(inputValue)
     setInputValue('')
   }

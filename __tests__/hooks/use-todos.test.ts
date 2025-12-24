@@ -65,6 +65,7 @@ describe('useTodos', () => {
 
     expect(result.current.todos).toHaveLength(2)
 
+    // テストタスク2を削除すると、テストタスク1が残る
     const todoId = result.current.todos[0].id
 
     act(() => {
@@ -72,7 +73,7 @@ describe('useTodos', () => {
     })
 
     expect(result.current.todos).toHaveLength(1)
-    expect(result.current.todos[0].text).toBe('テストタスク2')
+    expect(result.current.todos[0].text).toBe('テストタスク1')
   })
 
   it('todosをlocalStorageに保存できる', () => {
