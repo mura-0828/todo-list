@@ -1,13 +1,13 @@
-"use client"
+'use client'
 
-import { useState, useCallback } from "react"
-import type { Todo } from "@/types/todo"
+import { useState, useCallback } from 'react'
+import type { Todo } from '@/types/todo'
 
 export function useTodos() {
   const [todos, setTodos] = useState<Todo[]>([])
 
   const addTodo = useCallback((text: string) => {
-    if (text.trim() === "") return
+    if (text.trim() === '') return
 
     const newTodo: Todo = {
       id: crypto.randomUUID(),
@@ -20,7 +20,11 @@ export function useTodos() {
   }, [])
 
   const toggleTodo = useCallback((id: string) => {
-    setTodos((prev) => prev.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)))
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    )
   }, [])
 
   const deleteTodo = useCallback((id: string) => {

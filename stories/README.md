@@ -25,13 +25,13 @@ npm run build-storybook
 ### 基本的なストーリーの例
 
 ```tsx
-import type { Meta, StoryObj } from "@storybook/react"
-import { MyComponent } from "@/components/my-component"
+import type { Meta, StoryObj } from '@storybook/react'
+import { MyComponent } from '@/components/my-component'
 
 const meta = {
-  title: "Components/MyComponent",
+  title: 'Components/MyComponent',
   component: MyComponent,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof MyComponent>
 
 export default meta

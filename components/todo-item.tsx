@@ -1,11 +1,11 @@
-"use client"
+'use client'
 
-import type { Todo } from "@/types/todo"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Trash2 } from "lucide-react"
-import { cn } from "@/lib/utils"
+import type { Todo } from '@/types/todo'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Trash2 } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 interface TodoItemProps {
   todo: Todo
@@ -15,15 +15,24 @@ interface TodoItemProps {
 
 export function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
   return (
-    <Card className={cn("shadow-sm transition-all hover:shadow-md", todo.completed && "bg-muted/50")}>
+    <Card
+      className={cn(
+        'shadow-sm transition-all hover:shadow-md',
+        todo.completed && 'bg-muted/50'
+      )}
+    >
       <CardContent className="p-4">
         <div className="flex flex-col gap-3">
           <div className="flex items-start gap-3">
-            <Checkbox checked={todo.completed} onCheckedChange={() => onToggle(todo.id)} className="shrink-0 mt-0.5" />
+            <Checkbox
+              checked={todo.completed}
+              onCheckedChange={() => onToggle(todo.id)}
+              className="shrink-0 mt-0.5"
+            />
             <span
               className={cn(
-                "flex-1 text-foreground transition-all break-words",
-                todo.completed && "line-through text-muted-foreground",
+                'flex-1 text-foreground transition-all break-words',
+                todo.completed && 'line-through text-muted-foreground'
               )}
             >
               {todo.text}

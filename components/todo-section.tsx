@@ -1,7 +1,7 @@
-"use client"
+'use client'
 
-import type { Todo } from "@/types/todo"
-import { TodoItem } from "@/components/todo-item"
+import type { Todo } from '@/types/todo'
+import { TodoItem } from '@/components/todo-item'
 
 interface TodoSectionProps {
   title: string
@@ -10,7 +10,12 @@ interface TodoSectionProps {
   onDelete: (id: string) => void
 }
 
-export function TodoSection({ title, todos, onToggle, onDelete }: TodoSectionProps) {
+export function TodoSection({
+  title,
+  todos,
+  onToggle,
+  onDelete,
+}: TodoSectionProps) {
   if (todos.length === 0) return null
 
   return (
@@ -20,7 +25,12 @@ export function TodoSection({ title, todos, onToggle, onDelete }: TodoSectionPro
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {todos.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} onToggle={onToggle} onDelete={onDelete} />
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onToggle={onToggle}
+            onDelete={onDelete}
+          />
         ))}
       </div>
     </div>

@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { TodoSection } from "@/components/todo-section"
-import { fn } from "@storybook/test"
-import type { Todo } from "@/types/todo"
+import type { Meta, StoryObj } from '@storybook/react'
+import { TodoSection } from '@/components/todo-section'
+import { fn } from '@storybook/test'
+import type { Todo } from '@/types/todo'
 
 const meta = {
-  title: "Components/TodoSection",
+  title: 'Components/TodoSection',
   component: TodoSection,
   parameters: {
-    layout: "padded",
+    layout: 'padded',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   args: {
     onToggle: fn(),
     onDelete: fn(),
@@ -21,20 +21,20 @@ type Story = StoryObj<typeof meta>
 
 const sampleTodos: Todo[] = [
   {
-    id: "1",
-    text: "プロジェクトの企画書を作成する",
+    id: '1',
+    text: 'プロジェクトの企画書を作成する',
     completed: false,
     createdAt: new Date(Date.now() - 3600000),
   },
   {
-    id: "2",
-    text: "デザインレビューを実施する",
+    id: '2',
+    text: 'デザインレビューを実施する',
     completed: false,
     createdAt: new Date(Date.now() - 7200000),
   },
   {
-    id: "3",
-    text: "コードレビューを依頼する",
+    id: '3',
+    text: 'コードレビューを依頼する',
     completed: false,
     createdAt: new Date(Date.now() - 10800000),
   },
@@ -42,14 +42,14 @@ const sampleTodos: Todo[] = [
 
 const completedTodos: Todo[] = [
   {
-    id: "4",
-    text: "ミーティングの議事録を共有する",
+    id: '4',
+    text: 'ミーティングの議事録を共有する',
     completed: true,
     createdAt: new Date(Date.now() - 86400000),
   },
   {
-    id: "5",
-    text: "テストケースを作成する",
+    id: '5',
+    text: 'テストケースを作成する',
     completed: true,
     createdAt: new Date(Date.now() - 172800000),
   },
@@ -57,28 +57,28 @@ const completedTodos: Todo[] = [
 
 export const アクティブなタスク: Story = {
   args: {
-    title: "アクティブなタスク",
+    title: 'アクティブなタスク',
     todos: sampleTodos,
   },
 }
 
 export const 完了したタスク: Story = {
   args: {
-    title: "完了したタスク",
+    title: '完了したタスク',
     todos: completedTodos,
   },
 }
 
 export const 空のリスト: Story = {
   args: {
-    title: "アクティブなタスク",
+    title: 'アクティブなタスク',
     todos: [],
   },
 }
 
 export const 多数のタスク: Story = {
   args: {
-    title: "アクティブなタスク",
+    title: 'アクティブなタスク',
     todos: Array.from({ length: 10 }, (_, i) => ({
       id: `${i}`,
       text: `タスク ${i + 1}`,
