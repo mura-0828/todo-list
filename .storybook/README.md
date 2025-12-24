@@ -29,11 +29,14 @@ npm run build-storybook
 ### エラーが発生する場合
 
 1. node_modulesを削除して再インストール：
+
 ```bash
 rm -rf node_modules package-lock.json
 npm install
 ```
 
 2. Storybookのキャッシュをクリア：
+
 ```bash
 npm run storybook -- --no-manager-cache
+```

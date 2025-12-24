@@ -1,26 +1,29 @@
-"use client"
+'use client'
 
-import type React from "react"
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent } from "@/components/ui/card"
-import { Plus } from "lucide-react"
+import type React from 'react'
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Card, CardContent } from '@/components/ui/card'
+import { Plus } from 'lucide-react'
 
 interface TodoInputProps {
   onAdd: (text: string) => void
 }
 
 export function TodoInput({ onAdd }: TodoInputProps) {
-  const [inputValue, setInputValue] = useState("")
+  const [inputValue, setInputValue] = useState('')
 
   const handleAdd = () => {
+    if (inputValue.trim() === '') {
+      return
+    }
     onAdd(inputValue)
-    setInputValue("")
+    setInputValue('')
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !e.nativeEvent.isComposing) {
+    if (e.key === 'Enter' && !e.nativeEvent.isComposing) {
       e.preventDefault()
       handleAdd()
     }

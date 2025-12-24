@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { TodoList } from "@/components/todo-list"
+import type { Meta, StoryObj } from '@storybook/react'
+import { TodoList } from '@/components/todo-list'
 
 const meta = {
-  title: "Components/TodoList",
+  title: 'Components/TodoList',
   component: TodoList,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof TodoList>
 
 export default meta
@@ -18,7 +18,7 @@ export const デフォルト: Story = {}
 export const 初期状態: Story = {
   play: async ({ canvasElement }) => {
     // LocalStorageをクリアして初期状態を表示
-    localStorage.removeItem("todos")
+    localStorage.removeItem('todos')
     window.location.reload()
   },
 }

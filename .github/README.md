@@ -5,18 +5,23 @@
 ## 🚀 自動化されている処理
 
 ### 1. テスト実行 (test.yml)
+
 プルリクエストとpush時に自動実行されます：
+
 - 型チェック (TypeScript)
 - ESLintによるコード品質チェック
 - Jestによるユニットテストと統合テスト
 - テストカバレッジの測定
 
 ### 2. Storybookデプロイ (storybook.yml)
+
 - **mainブランチへのpush時**: GitHub Pagesに自動デプロイ
 - **プルリクエスト作成時**: ビルド確認とプレビューコメント
 
 ### 3. コード品質チェック (lint.yml)
+
 プルリクエスト時に実行されます：
+
 - ESLintによる静的解析
 - Prettierによるコードフォーマットチェック
 
@@ -32,15 +37,16 @@
 4. 以下の設定を行う：
 
 #### Branch name pattern
+
 ```
 main
 ```
 
 #### Protect matching branches
+
 - ✅ **Require a pull request before merging**
   - ✅ Require approvals (推奨: 1人以上)
   - ✅ Dismiss stale pull request approvals when new commits are pushed
-  
 - ✅ **Require status checks to pass before merging**
   - ✅ Require branches to be up to date before merging
   - 以下のステータスチェックを必須に設定：
@@ -52,6 +58,7 @@ main
   - レビューコメントの解決を必須にする
 
 #### Bypass list（バイパスリスト）
+
 - **空のままにする**: 誰もルールをバイパスできません（管理者も含む）
 - 管理者のみバイパスを許可する場合は、ここに管理者を追加します
 
@@ -109,8 +116,8 @@ Storybookを公開するため、GitHub Pagesを有効化してください：
 
 ## 🎯 ワークフローのトリガー
 
-| ワークフロー | トリガー |
-|------------|---------|
-| test.yml | PR作成時、main/developへのpush |
+| ワークフロー  | トリガー                       |
+| ------------- | ------------------------------ |
+| test.yml      | PR作成時、main/developへのpush |
 | storybook.yml | mainへのpush、mainへのPR作成時 |
-| lint.yml | main/developへのPR作成時 |
+| lint.yml      | main/developへのPR作成時       |
