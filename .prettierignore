@@ -1,0 +1,24 @@
+# 依存関係
+node_modules
+.pnp
+.pnp.js
+
+# ビルド出力
+.next
+out
+dist
+build
+storybook-static
+
+# カバレッジ
+coverage
+
+# その他
+.git
+.env
+.env.local
+.env.production.local
+.env.development.local
+pnpm-lock.yaml
+package-lock.json
+yarn.lock

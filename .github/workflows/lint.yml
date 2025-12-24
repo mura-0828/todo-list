@@ -1,0 +1,34 @@
+name: コード品質チェック
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  lint:
+    name: ESLintとPrettier
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: コードをチェックアウト
+        uses: actions/checkout@v4
+      
+      - name: pnpmをセットアップ
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      
+      - name: Node.jsをセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      
+      - name: 依存関係をインストール
+        run: pnpm install --frozen-lockfile
+      
+      - name: ESLintチェック
+        run: pnpm run lint
+        
+      - name: Prettierチェック
+        run: pnpm run format:check
